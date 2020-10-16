@@ -59,5 +59,15 @@ namespace CurrencyConvert.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _138602_logo_grafika_pingvin_neletayushhaya_ptica_ptica_1920x1080 {
+            get {
+                object obj = ResourceManager.GetObject("138602-logo-grafika-pingvin-neletayushhaya_ptica-ptica-1920x1080", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

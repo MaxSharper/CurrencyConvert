@@ -11,16 +11,13 @@ namespace CurrencyConvert
         public Form1()
         {
             InitializeComponent();
-            // If registry key is true set checkbox check mark like checked
-            if (registry.OpenSubKey(@"ExchangeRate").GetValue("DoNotDownloadAgain").ToString().ToLower() == "true")
-                checkBox1.Checked = true;
             checkBox1.CheckedChanged += (s, e) => // If checkbox checked change
             {
                 // Checking
                 if (checkBox1.Checked) // if it's checked set registry value true
-                    registry.OpenSubKey("ExchangeRate", true).SetValue("DoNotDownloadAgain", true);
+                    registry.OpenSubKey("ExchangeRate", true).SetValue("DoNotDownloadAgain", "true");
                 else // Otherwise - false
-                    registry.OpenSubKey("ExchangeRate", true).SetValue("DoNotDownloadAgain", false);
+                    registry.OpenSubKey("ExchangeRate", true).SetValue("DoNotDownloadAgain", "false");
             };
             secondCount.KeyPress += (s, e) => { CopyPaste(secondCount, e.KeyChar); }; // Need for ability to copy and paste
         }
@@ -38,8 +35,9 @@ namespace CurrencyConvert
             secondValue.SelectedIndex = 0; // Set first index to 0 (UAH), by default      
             // Call the necessary methods
             exchangeRate.RegistryCheck();
+            if (registry.OpenSubKey(@"ExchangeRate").GetValue("DoNotDownloadAgain").ToString() == "true") 
+                checkBox1.Checked = true;
             exchangeRate.RateConvertaion();
-
             PopUpHelper();
             // Set the status strip text to the general rates
             currency.Text = $"RUB: {ConvertationVariables.RUBToUA}    USD: {ConvertationVariables.USDToUA}    EUR: {ConvertationVariables.EURToUA}";

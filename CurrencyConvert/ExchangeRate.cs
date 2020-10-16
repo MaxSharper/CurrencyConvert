@@ -10,26 +10,22 @@ namespace CurrencyConvert
 {
     class ExchangeRate
     {
-        #region Constructor
-        public ExchangeRate(Form1 form) => form1 = form;
-        #endregion
         #region Variables
         private string dateWebsite;
         private readonly Form1 form1;
+        #region Constructor
+        public ExchangeRate(Form1 form) => form1 = form;
+        #endregion
         #endregion   
         #region Main Methods (Calculation, RegistryChecker, DateChecker etc)
         public void RegistryCheck()
         {
             try
             {
-                if (form1.registry.OpenSubKey(@"ExchangeRate").GetValue("DoNotDownloadAgain").ToString().ToLower() == "false")
-                {
-                    CurrencyParse(); // If user don't set check mark to the checkbox we parse new rates
-                }
+                if (form1.registry.OpenSubKey(@"ExchangeRate").GetValue("DoNotDownloadAgain").ToString() == "false")
+                    CurrencyParse(); // If user don't set check mark to the checkbox we parse new rates       
                 else
-                {
                     form1.rates = File.ReadAllText("ExchangeRate.txt", Encoding.GetEncoding(65001)); // Otherwise the read it from file
-                }
             }
             catch (NullReferenceException)
             {
@@ -57,7 +53,7 @@ namespace CurrencyConvert
             dateWebsite = wc.DownloadString("https://bilet.pp.ru/calculator_rus/tochnoe_moskovskoe_vremia.php");
             DateCheck(); //Check date
             form1.rates = File.ReadAllText("ExchangeRate.txt", Encoding.GetEncoding(65001)); //Write currency rate in file
-        }  
+        }
         private void DateCheck()
         {
             //Check if real date is equal to client date, if no, we show popup messagebox

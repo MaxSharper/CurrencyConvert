@@ -43,8 +43,8 @@
             this.currency = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.topMost = new System.Windows.Forms.ToolStripMenuItem();
-            this.exit = new System.Windows.Forms.ToolStripMenuItem();
             this.fileSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.exit = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -204,19 +204,19 @@
             this.topMost.Text = "Поверх всех окон";
             this.topMost.Click += new System.EventHandler(this.TopMost_Click);
             // 
-            // exit
-            // 
-            this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(205, 22);
-            this.exit.Text = "Выйти";
-            this.exit.Click += new System.EventHandler(this.Exit_Click);
-            // 
             // fileSave
             // 
             this.fileSave.Name = "fileSave";
             this.fileSave.Size = new System.Drawing.Size(205, 22);
             this.fileSave.Text = "Сохранить в файл";
             this.fileSave.Click += new System.EventHandler(this.FileSave_Click);
+            // 
+            // exit
+            // 
+            this.exit.Name = "exit";
+            this.exit.Size = new System.Drawing.Size(205, 22);
+            this.exit.Text = "Выйти";
+            this.exit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // Form1
             // 
